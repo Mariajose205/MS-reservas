@@ -221,9 +221,10 @@ public class ReservaService {
 
     // Validaciones específicas
     public void validarReserva(Reserva reserva) {
-        if (reserva.getFechaClase().isBefore(LocalDateTime.now())) {
-            throw new RuntimeException("La fecha de clase no puede ser en el pasado");
-        }
+        // Temporalmente desactivado para permitir reservas mientras se arregla el parsing de fecha en el frontend
+        // if (reserva.getFechaClase().isBefore(LocalDateTime.now())) {
+        //     throw new RuntimeException("La fecha de clase no puede ser en el pasado");
+        // }
         
         if (reserva.getNumeroPersonas() == null || reserva.getNumeroPersonas() < 1) {
             throw new RuntimeException("El número de personas debe ser al menos 1");
