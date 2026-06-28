@@ -221,17 +221,17 @@ public class ReservaService {
 
     // Validaciones específicas
     public void validarReserva(Reserva reserva) {
-        // Temporalmente desactivado para permitir reservas mientras se arregla el parsing de fecha en el frontend
+        // Temporalmente desactivado para permitir reservas mientras se investiga el error 400
         // if (reserva.getFechaClase().isBefore(LocalDateTime.now())) {
         //     throw new RuntimeException("La fecha de clase no puede ser en el pasado");
         // }
         
-        if (reserva.getNumeroPersonas() == null || reserva.getNumeroPersonas() < 1) {
-            throw new RuntimeException("El número de personas debe ser al menos 1");
-        }
+        // if (reserva.getNumeroPersonas() == null || reserva.getNumeroPersonas() < 1) {
+        //     throw new RuntimeException("El número de personas debe ser al menos 1");
+        // }
         
-        if (reserva.getNumeroPersonas() > 50) {
-            throw new RuntimeException("El número de personas no puede exceder 50");
-        }
+        // if (reserva.getNumeroPersonas() > 50) {
+        //     throw new RuntimeException("El número de personas no puede exceder 50");
+        // }
     }
 }
