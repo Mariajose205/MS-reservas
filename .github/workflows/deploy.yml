@@ -52,7 +52,14 @@ jobs:
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     
     steps:
-      - name: Deploy notification
-        run: |
-          echo "Imagen desplegada: ${{ secrets.DOCKER_USERNAME }}/fitlife-reservas:latest"
-          echo "SHA: ${{ github.sha }}"
+      - name: Deploy to EC2 Backend
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.BACKEND_EC2_IP }}
+          username: ec2-user
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd /home/ec2-user
+            docker compose -f docker-compose.backend.yml pull
+            docker compose -f docker-compose.backend.yml up -d
+            docker image prune -f
